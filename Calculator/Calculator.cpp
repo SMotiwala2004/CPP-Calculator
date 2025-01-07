@@ -46,45 +46,53 @@ R"(--- Calculator ---
 4) Division
 5) Exit Application
 )";
-	cout << menuMessage << endl;
-	cin >> operatorInput;
-	
-	switch (operatorInput) {
-	case 1: 
-		cout << "Enter the first number you would like to add" << endl;
-		cin >> num1;
-		cout << "Enter the second number you would like to add" << endl;
-		cin >> num2;
-		cout << addition(num1, num2) << endl;
-		break;
-	case 2:
-		cout << "Enter the first number you would like to subtract" << endl;
-		cin >> num1;
-		cout << "Enter the second number you would like to subtract" << endl;
-		cin >> num2;
-		cout << subtraction(num1, num2) << endl;
-		break;
-	case 3:
-		cout << "Enter the first number you would like to multiply" << endl;
-		cin >> num1;
-		cout << "Enter the second number you would like to multiply" << endl;
-		cin >> num2;
-		cout << multiplication(num1, num2) << endl;
-		break;
-	case 4:
-		cout << "Enter the first number you would like to divide" << endl;
-		cin >> num1;
-		cout << "Enter the second number you would like to divide" << endl;
-		cin >> num2;
-		cout << division(num1, num2) << endl;
-		break;
-	case 5:
-		// Tell the user thanks for using the program, then exit;
-		cout << "Thank's for using the calculator!";
-		this_thread::sleep_for(chrono::seconds(1));
-		exit(0);
-	default:
-		cout << "Invalid Operation. Please try again!" << endl;
-		main();
+	while (true) {
+		cout << menuMessage << endl;
+		cin >> operatorInput;
+
+		switch (operatorInput) {
+		case 1:
+			cout << "Enter the first number you would like to add" << endl;
+			cin >> num1;
+			cout << "Enter the second number you would like to add" << endl;
+			cin >> num2;
+			cout << addition(num1, num2) << endl << endl;
+			break;
+		case 2:
+			cout << "Enter the first number you would like to subtract" << endl;
+			cin >> num1;
+			cout << "Enter the second number you would like to subtract" << endl;
+			cin >> num2;
+			cout << subtraction(num1, num2) << endl << endl;
+			break;
+		case 3:
+			cout << "Enter the first number you would like to multiply" << endl;
+			cin >> num1;
+			cout << "Enter the second number you would like to multiply" << endl;
+			cin >> num2;
+			cout << multiplication(num1, num2) << endl << endl;
+			break;
+		case 4:
+			cout << "Enter the first number you would like to divide" << endl;
+			cin >> num1;
+			cout << "Enter the second number you would like to divide" << endl;
+			cin >> num2;
+			if (num1 == 0 || num2 == 0) {
+				cout << "Invalid digit 0." << endl << endl;
+				break;
+			}
+			cout << division(num1, num2) << endl << endl;
+			break;
+		case 5:
+			// Tell the user thanks for using the program, then exit;
+			cout << "Thank's for using the calculator!";
+			this_thread::sleep_for(chrono::seconds(1));
+			cout << endl << endl;
+			system("pause");
+			return 0;
+		default:
+			cout << "Invalid Operation. Please try again!" << endl;
+			continue;
+		}
 	}
 }
